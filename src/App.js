@@ -13,7 +13,7 @@ function App() {
   const [showResult, setShowResult] = useState(false);
 
   const circuit = "CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA7iGpBrVx0+AtCmLhuvfrQyMR4QnU4BzaaPHrexAY0gcALoLpYEKLafOMILNNDEYMxLGGfFCGFGDNRoKLI64hLjOwShehEhgcCAAJkwAZgCGAK4ANgZSAYyWxrQ+nABO4FgSudn5VlS48PoAblRkvJoYTWBKUJ1y4Eh6vggcDWClzRLDZT593d6detADxa3m7cIyK51icFJLo1piEvo8CvslEif6QA";
-  const falstad = `http://www.falstad.com/circuit/circuitjs.html?hideSidebar=true&hideMenu=true&ctz=${circuit}&whiteBackground=true`;
+  const falstad = `https://www.falstad.com/circuit/circuitjs.html?hideSidebar=true&hideMenu=true&ctz=${circuit}&whiteBackground=true`;
 
 
   const getValue = (label, fn) => {
