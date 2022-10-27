@@ -5,6 +5,8 @@ import { AppBar, Grid, TextField, Typography, InputLabel, Select, MenuItem, Form
 import './App.css';
 import { Box } from '@mui/system';
 
+import eqs from './eqs.jpeg'
+
 function App() {
   const [vcc, setVcc] = useState();
   const [vbb, setVbb] = useState();
@@ -284,6 +286,9 @@ function App() {
             {formulae}
           </Typography>
         </Grid>
+        <div className='box'>
+          <img src={eqs} alt="eq" />
+        </div>
       </div>
     )
   }
@@ -332,7 +337,6 @@ function App() {
         </Button>
       </Grid>
       {showResult && (renderResult())}
-
     </div >
   );
 }
