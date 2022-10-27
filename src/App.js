@@ -99,69 +99,89 @@ function App() {
   }
 
   const renderResult = () => {
-    let ib, ic, vce, vc, ie, v2, q, icsat, formulae;
+    let ib, ic, vce, vc, ie, ve, vb, v2, vre, rcic, q, icsat, formulae;
     switch (transistor) {
       case 10:
         circuit = "CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA7iGpBrVx0+AtCmLhuvfrQyMR4QnU4BzaaPHrexAY0gcALoLpYEKLafOMILNNDEYMxLGGfFCGFGDNRoKLI64hLjOwShehEhgcCAAJkwAZgCGAK4ANgZSAYyWxrQ+nABO4FgSudn5VlS48PoAblRkvJoYTWBKUJ1y4Eh6vggcDWClzRLDZT593d6detADxa3m7cIyK51icFJLo1piEvo8CvslEif6QA";
 
         ib = (vbb - 0.7) / rb;
         ic = ib * gain;
-        vce = vcc - (rc * ic);
+        rcic = (rc * ic);
+        vce = vcc - rcic;
         icsat = vcc / rc;
         q = `ic=${ic}, vce=${vce}`;
         formulae = `ib = (vbb - 0.7) / rb;
-          ic = ib * gain;
-          vce = vcc - (rc * ic);
-          icsat = vcc/rc;
-          q = [ic, vce];`
+        ic = ib * gain;
+        rcic = (rc * ic);
+        vce = vcc - rcic;
+        icsat = vcc / rc;
+        q = [ic, vce];`
         break;
       case 20:
         circuit = 'CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA5iGgnWjQpe-EXUaQOAF16QMtDIz50siqOBAs0sLAlxY0q-ZGJCwSVGDTnckFAfaQE1ZIwAmTAGYBDAK4AbKQ4AdwVGVSU5MPAOADcqDGJeIQSksAx5CSpGMCyJaAQQsWThDKTBYUkAJ2KsVWL0zNdq2oRhZRL1OrgiiM6Oiqg46MG+vqy1C3UYQoAPKlx5VQgMQhUMqnA6ADUAY12OebBCCCxCcLAVQhp5S5BtgCMHw95j2kJCZJo0SDpbugASkwXoYkGBiLhkmlzps7gCDqEyuANh1GkMgA';
 
         ie = (vbb - 0.7) / re;
         ic = ie;
-        vc = vcc - (re * ic);
-        vce = vc - (rc * ic);
-        icsat = vcc / (rc+re);
+        vb = vcc;
+        ve = (re * ic);
+        vc = vcc - ve;
+        rcic = (rc * ic);
+        vce = vc - rcic;
+        icsat = vcc / (rc + re);
         q = `ic=${ic}, vce=${vce}`;
         formulae = `ie = (vbb - 0.7) / re;
-          ic = ie;
-          vc = vcc - (re * ic);
-          vce = vc - (rc * ic);
-          icsat = vcc/rc;
-          q = [ic, vce];`
+        ic = ie;
+        vb = vcc;
+        ve = (re * ic);
+        vc = vcc - ve;
+        rcic = (rc * ic);
+        vce = vc - rcic;
+        icsat = vcc / (rc + re);
+        q = [ic, vce];`
         break;
       case 30:
         circuit = 'CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA5iGgnWjQpe-EXUaQOAF16QMtDIz50siqOBAs0sIoVyEsfFHqwHhqMGkiEzKRXIZ0wcEABMmAMwCGAVwA2UhwA7gqMqkpyoeAcAG5UGMS8QvGJYBjyElSMzuoS0AjBYknC6YmC5hwATkVYqkVpGchwVTUIwsrF6rXNIeGdHeVQHAAeVLjyqhAYBgry8mB0AGoAxssj4Da0M1iWW0jzdABKWOtoYIRbF4I0VnQHIIdMp1hIYMS4SamEjPeHayGlcDperAyTVPoQtSDbLwFqQsJqBrqZw9EETRGg9ZYFznJA7eYkKjgI6cIA';
         v2 = vcc * (r2 / (r1 + r2));
         ie = (v2 - 0.7) / re;
         ic = ie;
-        vc = vcc - (re * ic);
-        vce = (rc * ic) - vc;
-        icsat = vcc / (rc+re);
+        vb = v2;
+        ve = (re * ic);
+        rcic = (rc * ic);
+        vc = vcc - rcic;
+        vce = vc - ve;
+        icsat = vcc / (rc + re);
         q = `ic=${ic}, vce=${vce}`;
         formulae = `v2 = vcc * (r2 / (r1 + r2));
-          ie = (v2 - 0.7) / re;
-          ic = ie;
-          vc = vcc - (re * ic);
-          vce = (rc * ic) - vc;
-          icsat = vcc/rc;
-          q = [ic, vce];`
+        ie = (v2 - 0.7) / re;
+        ic = ie;
+        vb = v2;
+        ve = (re * ic);
+        rcic = (rc * ic);
+        vc = vcc - rcic;
+        vce = vc - ve;
+        icsat = vcc / (rc + re);
+        q = [ic, vce];`
         break;
       case 40:
         circuit = 'CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA5iGgnWjQpe-EXUaQOAd1oZGWOb0gZZjTgDcqGYryFadYDColU1JidATSxu4UZ2DhkgE42sCm4eO0scDq746LARhQNsoZD8ZBUZHGzjJAA8qXBUFCAxCIKMqcDoANQBjQo5k3yDCYXd5QkJcsALi0t4ycBJdeUgMvJAAJSZmtDAHSFxdCCHGFQa+kpl7cBywrygOABclNMUwmIi2Xlhg3Cw0BWPIYiMsHRZUMCGEXEgUE-ZIBGpIkAATJgAzACGAFcADZrDiaXZxXa7EyKJDmSwcIA';
         ie = (vbb - 0.7) / re;
         ic = ie;
-        vc = vcc - (rc * ic);
-        vce = (re * ic) - vc
-        icsat = vcc / rc;
+        vre = (re * ic);
+        ve = vcc - vre
+        rcic = (rc * ic);
+        vc = vcc - rcic;
+        vce = rcic - ve;
+        icsat = vcc / (rc + re);
         q = `ic=${ic}, vce=${vce}`;
         formulae = `ie = (vbb - 0.7) / re;
-          ic = ie;
-          vc = vcc - (rc * ic);
-          vce = (re * ic) - vc
-          icsat = vcc/rc;
-          q = [ic, vce];`
+        ic = ie;
+        vre = (re * ic);
+        ve = vcc - vre
+        rcic = (rc * ic);
+        vc = vcc - rcic;
+        vce = rcic - ve;
+        icsat = vcc / (rc + re);
+        q = [ic, vce];`
         break;
       case 50:
         circuit = 'CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA5iGgnWjQpe-EXUaQOAd1oZGWOb0gZZjTgDcqGYryFadYDColU1JidATSxu4UZ2DhkgE42sCm4eO0scDq746LARhQNsoZD8ZBUZHGzjJAA8qXBUFCAxCIKMqcDoANQBjQo5k3zowQkJaMlpIOhUwOgAlLFLeWsqHNHlIDLyQZqZ2tDAHSFxdCFHGRpaSmXtwHLCvKH9VTZjwsz9XbYPFNd3JGVWc7eP23yQsQggsStpCFTnBzgAXJTTFMO3GNi8WBEQi4LJ8FCg0Z0FioMA9Ko4FByZSZGhgOAgAAmTAAZgBDACuABsPhwgA';
@@ -169,17 +189,24 @@ function App() {
         v2 = vcc * (r2 / (r1 + r2));
         ie = (v2 - 0.7) / re;
         ic = ie;
-        vc = vcc - (re * ic);
-        vce = (rc * ic) - vc;
-        icsat = vcc / (rc+re);
+        vb = v2;
+        vre = (re * ic);
+        ve = vcc - vre
+        rcic = (rc * ic);
+        vc = vcc - rcic;
+        vce = rcic - ve;
+        icsat = vcc / (rc + re);
         q = `ic=${ic}, vce=${vce}`;
         formulae = `v2 = vcc * (r2 / (r1 + r2));
-          ie = (v2 - 0.7) / re;
-          ic = ie;
-          vc = vcc - (re * ic);
-          vce = (rc * ic) - vc;
-          icsat = vcc/rc;
-          q = [ic, vce];`
+        ie = (v2 - 0.7) / re;
+        ic = ie;
+        vb = v2;
+        vre = (re * ic);
+        ve = vcc - vre
+        rcic = (rc * ic);
+        vc = vcc - rcic;
+        vce = rcic - ve;
+        icsat = vcc / (rc + re);`
         break;
       default:
         ib = 0;
@@ -214,6 +241,26 @@ function App() {
           <Grid container className='gride'>
             <Typography>
               IcSat = {icsat} A
+            </Typography>
+          </Grid>
+          <Grid container className='gride'>
+            <Typography>
+              Ve = {ve} V
+            </Typography>
+          </Grid>
+          <Grid container className='gride'>
+            <Typography>
+              Vb = {vb} V
+            </Typography>
+          </Grid>
+          <Grid container className='gride'>
+            <Typography>
+              Vc = {vc} V
+            </Typography>
+          </Grid>
+          <Grid container className='gride'>
+            <Typography>
+              Rc*Ic = {rcic} V
             </Typography>
           </Grid>
           <Grid container className='gride'>
@@ -263,7 +310,7 @@ function App() {
           >
             <MenuItem value={10}>NPN base</MenuItem>
             <MenuItem value={20}>NPN emissor</MenuItem>
-            <MenuItem value={30}>PNP emissor divisor</MenuItem>
+            <MenuItem value={30}>NPN emissor divisor</MenuItem>
             <MenuItem value={40}>PNP emissor</MenuItem>
             <MenuItem value={50}>PNP emissor divisor</MenuItem>
           </Select>
