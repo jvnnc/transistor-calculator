@@ -124,18 +124,18 @@ function App() {
         ic = ie;
         vb = vcc;
         ve = (re * ic);
-        vc = vcc - ve;
         rcic = (rc * ic);
-        vce = vc - rcic;
+        vc = vcc - rcic;
+        vce = vcc - rcic;
         icsat = vcc / (rc + re);
         q = `ic=${ic}, vce=${vce}`;
         formulae = `ie = (vbb - 0.7) / re;
         ic = ie;
         vb = vcc;
         ve = (re * ic);
-        vc = vcc - ve;
         rcic = (rc * ic);
-        vce = vc - rcic;
+        vc = vcc - rcic;
+        vce = vcc - rcic;
         icsat = vcc / (rc + re);
         q = [ic, vce];`
         break;
@@ -164,7 +164,7 @@ function App() {
         break;
       case 40:
         circuit = 'CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA5iGgnWjQpe-EXUaQOAd1oZGWOb0gZZjTgDcqGYryFadYDColU1JidATSxu4UZ2DhkgE42sCm4eO0scDq746LARhQNsoZD8ZBUZHGzjJAA8qXBUFCAxCIKMqcDoANQBjQo5k3yDCYXd5QkJcsALi0t4ycBJdeUgMvJAAJSZmtDAHSFxdCCHGFQa+kpl7cBywrygOABclNMUwmIi2Xlhg3Cw0BWPIYiMsHRZUMCGEXEgUE-ZIBGpIkAATJgAzACGAFcADZrDiaXZxXa7EyKJDmSwcIA';
-        ie = (vbb - 0.7) / re;
+        ie = (vb - 0.7) / re;
         ic = ie;
         vre = (re * ic);
         ve = vcc - vre
@@ -173,15 +173,14 @@ function App() {
         vce = rcic - ve;
         icsat = vcc / (rc + re);
         q = `ic=${ic}, vce=${vce}`;
-        formulae = `ie = (vbb - 0.7) / re;
+        formulae = `ie = (vb - 0.7) / re;
         ic = ie;
         vre = (re * ic);
         ve = vcc - vre
         rcic = (rc * ic);
         vc = vcc - rcic;
         vce = rcic - ve;
-        icsat = vcc / (rc + re);
-        q = [ic, vce];`
+        icsat = vcc / (rc + re);`
         break;
       case 50:
         circuit = 'CQAgjCAMB0l3BWcMBsBmALAJhQdgWgJwAcYKCFIGaIWICk9ApgLRhgBQA5iGgnWjQpe-EXUaQOAd1oZGWOb0gZZjTgDcqGYryFadYDColU1JidATSxu4UZ2DhkgE42sCm4eO0scDq746LARhQNsoZD8ZBUZHGzjJAA8qXBUFCAxCIKMqcDoANQBjQo5k3zowQkJaMlpIOhUwOgAlLFLeWsqHNHlIDLyQZqZ2tDAHSFxdCFHGRpaSmXtwHLCvKH9VTZjwsz9XbYPFNd3JGVWc7eP23yQsQggsStpCFTnBzgAXJTTFMO3GNi8WBEQi4LJ8FCg0Z0FioMA9Ko4FByZSZGhgOAgAAmTAAZgBDACuABsPhwgA';
@@ -261,6 +260,11 @@ function App() {
           <Grid container className='gride'>
             <Typography>
               Rc*Ic = {rcic} V
+            </Typography>
+          </Grid>
+          <Grid container className='gride'>
+            <Typography>
+              Vre = {vre} V
             </Typography>
           </Grid>
           <Grid container className='gride'>
