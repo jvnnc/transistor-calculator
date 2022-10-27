@@ -47,3 +47,13 @@
   vertical-align: middle;
 
 }
+
+.linebreak{
+  white-space: pre-line;
+}
+
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
